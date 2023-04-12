@@ -1,0 +1,6 @@
+version: "3"
+services:
+  api:
+    image: juanda/products-api:1.2.0
+    ports:
+      - "3005:3000"
