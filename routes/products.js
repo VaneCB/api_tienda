@@ -30,6 +30,20 @@ router.get("/:id", function (req, res) {
     res.status(404).send("Not found");
   }
 });
+/*GET product listening by categrory*/
+router.get("/category/:category", function (req, res) {
+  const products = productsWithPrices.filter(
+    (product) => product.masterCategory === req.params.category
+  );
+  if (products.length) {
+    // product.price = price.price;
+    // mejor destructuring
+    res.header("Content-Type", "application/json");
+    res.send(JSON.stringify(products));
+  } else {
+    res.status(404).send("Not found");
+  }
+});
 router.delete("/:id", function (req, res) {
   const product = productsWithPrices.find(
     (product) => product.id === req.params.id
